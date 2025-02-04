@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: stripe-integration
+api:
+  stripe:
+    apiKey: your_test_api_key
