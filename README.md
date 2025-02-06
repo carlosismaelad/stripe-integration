@@ -1,6 +1,6 @@
 # StripeController
 
-Stripe Billing | Recurring Payments & Subscription
+Stripe Billing | Recurring Payments & Subscription 🚀
 
 ## Card Token
 
@@ -215,11 +215,11 @@ A classe `StripeService` é responsável por integrar a aplicação com a plataf
 
 ---
 
-## Conclusão
+## Conclusão sobre StripeService
 Esta classe fornece funcionalidades para processar pagamentos e assinaturas utilizando o Stripe. Os métodos são organizados em:
 - **Pagamentos únicos:** `createCardToken`, `charge`
 - **Assinaturas:** `createSubscription`, `cancelSubscription`
 - **Gerenciamento de clientes e métodos de pagamento:** `createCustomer`, `createPaymentMethod`, `attachCustomerToPaymentMethod`
 
-Se precisar de mais detalhes sobre algum método ou melhorias no código, sinta-se à vontade para contribuir! 🚀
+
 
