@@ -1,3 +1,138 @@
+# StripeController
+
+Stripe Billing | Recurring Payments & Subscription
+
+## Card Token
+
+### Endpoint
+
+**Method:** `POST`  
+**URL:** `public/stripe/card/token`
+
+### Example
+
+**Request:**
+```json
+{
+  "cardNumber": "4242424242424242",
+  "expMonth": "05",
+  "expYear": "26",
+  "cvc": "123",
+  "username": "patrick"
+}
+```
+
+**Response:**
+```json
+{
+  "cardNumber": "4242424242424242",
+  "expMonth": "05",
+  "expYear": "26",
+  "cvc": "123",
+  "token": "tok_1Ok9JQB0FkclW1WXrdY8TFDp",
+  "username": "patrick",
+  "success": true
+}
+```
+
+---
+
+## Charge
+
+### Endpoint
+
+**Method:** `POST`  
+**URL:** `public/stripe/charge`
+
+### Example
+
+**Request:**
+```json
+{
+  "stripeToken": "tok_1Ok9JQB0FkclW1WXrdY8TFDp",
+  "username": "zend",
+  "amount": 5000,
+  "additionalInfo": {
+    "ID_TAG": "1234567890"
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "stripeToken": "tok_1Ok9JQB0FkclW1WXrdY8TFDp",
+  "username": "zend",
+  "amount": 5000.0,
+  "success": true,
+  "message": "Payment complete.",
+  "chargeId": "ch_3Ok9JbB0FkclW1WX14RkZViB",
+  "additionalInfo": {
+    "ID_TAG": "1234567890"
+  }
+}
+```
+
+---
+
+## Subscription
+
+### Endpoint
+
+**Method:** `POST`  
+**URL:** `public/stripe/customer/subscription`
+
+### Example
+
+**Request:**
+```json
+{
+  "cardNumber": "4242424242424242",
+  "expMonth": "05",
+  "expYear": "26",
+  "cvc": "123",
+  "email": "patrickpqdt87289@gmail.com",
+  "priceId": "price_1Ok5PmB0FkclW1WXrag0Rby3",
+  "username": "zend",
+  "numberOfLicense": 1
+}
+```
+
+**Response:**
+```json
+{
+  "stripeCustomerId": "cus_PZIcBMcxPGvrEi",
+  "stripeSubscriptionId": "sub_1OkA1BB0FkclW1WXvORStzo2",
+  "stripePaymentMethodId": "pm_1OkA19B0FkclW1WXEKD21zUm",
+  "username": "zend"
+}
+```
+
+---
+
+## Cancel Subscription
+
+### Endpoint
+
+**Method:** `DELETE`  
+**URL:** `public/stripe/subscription/{sub_id}`  
+**Param:** `{sub_id}` - Example: `sub_1OkA1BB0FkclW1WXvORStzo2`
+
+### Example
+
+**Request:**
+```
+DELETE
+```
+
+**Response:**
+```json
+{
+  "status": "canceled"
+}
+
+```
+
 # StripeService
 
 A classe `StripeService` é responsável por integrar a aplicação com a plataforma de pagamentos Stripe, permitindo a realização de pagamentos únicos, criação de assinaturas recorrentes e gerenciamento de métodos de pagamento.
