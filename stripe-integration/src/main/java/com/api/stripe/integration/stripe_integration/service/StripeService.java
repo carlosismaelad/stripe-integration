@@ -91,7 +91,7 @@ public class StripeService {
         PaymentMethod paymentMethod = createPaymentMethod(subscriptionDto);
         Customer customer = createCustomer(paymentMethod, subscriptionDto);
         paymentMethod = attachCustomerToPaymentMethod(customer, paymentMethod);
-        Subscription subscription = createSubscription(subscriptionDto, paymentMethod, customer);
+        Subscription subscription = executeSubscriptionCreation(subscriptionDto, paymentMethod, customer);
 
         return createResponse(subscriptionDto,paymentMethod,customer,subscription);
     }
@@ -162,7 +162,7 @@ public class StripeService {
 
     }
 
-    private Subscription createSubscription(StripeSubscriptionDto subscriptionDto, PaymentMethod paymentMethod, Customer customer) {
+    private Subscription executeSubscriptionCreation(StripeSubscriptionDto subscriptionDto, PaymentMethod paymentMethod, Customer customer) {
         try {
             Stripe.apiKey = "sk_test_**";
 
